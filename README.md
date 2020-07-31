@@ -9,8 +9,8 @@ $ composer install
 $ cp .env.example .env - (copy env files).
 # Setup database configartion
 $ php artisan migrate
-$ nmp install
-$ nmp run dev
+$ npm install
+$ npm run dev
 $ php artisan serve
 ```
 Put your github access token, username, password into the .env file.
