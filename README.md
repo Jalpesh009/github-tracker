@@ -25,8 +25,9 @@ Goto : [http://127.0.0.1:8000]
   - Register new user and login with that
   - Goto home using navigation link
   - You will see you github all repository, there you clone existing or create new using forms
-  - when you clone the repo you can edit or chaanges in the repo (All the cloned repo in storege folder).
-  - After changes view the changes using view buuton you can see your chnaged files listing and push with massage 
+  - When you clone the repo you can edit or changes in the repo (All the cloned repo in storage folder)..
+  - After changes view all the changes using view button. Also, you can see your changed files listing and push with any message
+  - All the commite and repo log save into the database as well.
   
 
 License
