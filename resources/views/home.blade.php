@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="Container-fluid mx-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
@@ -56,7 +56,7 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">User Id</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Url</th>
                         <th scope="col">Local Action</th>
                         <th scope="col">Github Action</th>
@@ -65,19 +65,20 @@
                     <tbody>
                       @foreach($repos as $repo)
                        <tr>
-                          <td>{{ $repo['id'] }}</td>
+                          <td width="10%">{{ $repo['id'] }}</td>
                           <td width="15%">{{ $repo['name'] }}</td>
                           <td width="20%">{{ $repo['clone_url'] }}</td>
-                          <td width="15%">
+                          <td width="10%">
                             @if (isset($repo['db_row']))
                                 @if(!$repo['db_row']['cloned'])
                                   <a class="btn btn-primary btn-sm" href="{{route('clone.repo',['id'=>$repo['db_row']['id']])}}" role="button">Clone</a>
                                 @else
                                   <a class="btn btn-primary btn-sm" href="{{route('view.repo',['id'=>$repo['db_row']['id']])}}" role="button">View</a>
+                                  <a class="btn btn-primary btn-sm" href="{{route('view.repo.commits',['id'=>$repo['db_row']['id']])}}" role="button">Commits List</a>
                                 @endif
                             @endif
                           </td>
-                          <td width="30%">
+                          <td width="15%">
                             <form method="POST" action="{{ route('clone.repo-github') }}">
                                   @csrf
                                   <input type="hidden" name="name" value="{{ $repo['name'] }}">

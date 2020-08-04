@@ -5,7 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{$repo->name}}</div>
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-2"> <a class="btn btn-primary btn-sm float-left" href="{{route('home')}}" role="button">Back To List</a> </div>
+                    <div class="col text-left"> {{$repo->name}} </div>
+                  </div>
+                </div>
                 <div class="card-body">
                   <div>
                     <?php dump($file_changes) ?>

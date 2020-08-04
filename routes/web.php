@@ -26,3 +26,6 @@ Route::any('/clone-repo-github', 'GithubController@cloneFromGithub')->name('clon
 Route::any('/remove-repo-github/{name}', 'GithubController@removeFromGithub')->name('remove.repo-github');
 Route::any('/push-repo/{id}', 'GithubController@pushRepo')->name('push.repo');
 Route::any('/view-repo/{id}', 'GithubController@viewRepo')->name('view.repo');
+Route::any('/view-repo-commits/{id}', 'GithubController@viewRepoCommits')->name('view.repo.commits');
+Route::any('/checkout-commit/{id}/{repoId}', 'GithubController@checkoutCommit')->name('checkout.commit');
+Route::any('/checkout-master/{repoId}', 'GithubController@checkoutMaster')->name('checkout.master');

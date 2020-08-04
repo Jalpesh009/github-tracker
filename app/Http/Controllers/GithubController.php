@@ -129,4 +129,29 @@ class GithubController extends Controller
     return view('repo',['repo'=>$flight,'file_changes'=>$chnages]);
   }
 
+  public function viewRepoCommits($id, Request $request)
+  {
+    $flight = Repository::find($id);
+    $repo = new OwnGitRepository(storage_path($flight->local_path));
+    $Commits = Commit::where('repo_id', $id)->get();
+    return view('commits',['commits'=> $Commits,'current_branch'=>$repo->getCurrentBranchName(),'flight'=>$flight]);
+  }
+
+  public function checkoutCommit($id, $repoId, Request $request)
+  {
+    $Commits = Commit::find($id);
+    $flight = Repository::find($repoId);
+    $repo = new OwnGitRepository(storage_path($flight->local_path));
+    $repo->checkout($Commits->sha);
+    return back()->with('message', 'Checkout Success');
+  }
+
+  public function checkoutMaster($repoId, Request $request)
+  {
+    $flight = Repository::find($repoId);
+    $repo = new OwnGitRepository(storage_path($flight->local_path));
+    $repo->checkout('master');
+    return back()->with('message', 'Checkout Success');
+  }
+
 }
